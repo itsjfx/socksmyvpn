@@ -21,7 +21,7 @@ start_microsocks() {
         "$tun_ip"
         -q
     )
-	if [[ -n "$SOCKS_USERNAME" ]] && [[ -n "$SOCKS_PASSWORD" ]]; then
+    if [[ -n "$SOCKS_USERNAME" ]] && [[ -n "$SOCKS_PASSWORD" ]]; then
         args+=(
             -u
             "$SOCKS_USERNAME"
@@ -47,18 +47,18 @@ kill_microsocks() {
 
 routes() {
     route_cmd="$1"
-	if [[ -n "${LOCAL_NETWORK-}" ]]; then
+    if [[ -n "${LOCAL_NETWORK-}" ]]; then
         ip route list match 0.0.0.0 | while read -r _route; do
             read gateway dev <<<"$(<<<"$_route" cut -f3,5 -d ' ')"
             if [[ "$dev" == "$tun" ]]; then
                 continue
             fi
-			for net in ${LOCAL_NETWORK//,/ }; do
+            for net in ${LOCAL_NETWORK//,/ }; do
                 echo "$route_cmd route to local network $net via $gateway dev $dev" >&2
                 ip route "$route_cmd" "$net" via "$gateway" dev "$dev"
-			done
+            done
         done
-	fi
+    fi
 }
 
 
