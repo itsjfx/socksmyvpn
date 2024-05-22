@@ -15,4 +15,7 @@ ENV SOCKS_PASSWORD=
 ENV SOCKS_AUTH_ONCE=0
 ENV LOCAL_NETWORK=
 ENV OPENVPN_CONFIG=*.conf
+
+LABEL org.opencontainers.image.source https://github.com/itsjfx/socksmyvpn
+
 ENTRYPOINT ["/entrypoint.sh"]

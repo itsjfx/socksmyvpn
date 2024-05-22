@@ -24,7 +24,9 @@ Some features:
   of an IP leak
 * socks server is shut down on OpenVPN disconnect
 
-## Example
+## Usage
+
+Image: [ghcr.io/itsjfx/socksmyvpn:latest](https://github.com/itsjfx/socksmyvpn/pkgs/container/socksmyvpn)
 
 You MUST specify `cap-add=NET_ADMIN`
 
@@ -42,7 +44,7 @@ docker run \
     -e SOCKS_USERNAME=test \
     -e SOCKS_PASSWORD=123 \
     -e SOCKS_AUTH_ONCE=0 \
-    socksmyvpn:latest \
+    ghcr.io/itsjfx/socksmyvpn:latest
 ```
 
 `curl -x socks5h://test:123@127.0.0.1:1080 https://ipinfo.io`

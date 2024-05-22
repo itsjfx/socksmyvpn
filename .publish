@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+if [[ -n "${GITHUB_TOKEN-}" ]]; then
+    <<<"$GITHUB_TOKEN" docker login -u "$GITHUB_REPOSITORY_OWNER" --password-stdin
+fi
+
+git_tag="$(git describe --exact-match --tags | sed 's/^v//')"
+
+for tag in "$git_tag" latest; do
+    image=ghcr.io/itsjfx/socksmyvpn:"$tag"
+    echo "Building $image ..." >&2
+    docker build . -t "$image"
+    echo "Pushing $image ..." >&2
+    docker push "$image"
+done
