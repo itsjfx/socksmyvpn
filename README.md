@@ -3,8 +3,8 @@
 This image connects to an OpenVPN server and runs a SOCKS5 proxy
 ([microsocks](https://github.com/rofl0r/microsocks)).
 
-This allows you to connect to an OpenVPN network without impacting your machines
-routing or DNS.
+This allows you to tunnel through an OpenVPN network without impacting your
+machines routing or DNS.
 
 Some features:
 * can enable SOCKS5 password authentication. by default no authentication is
@@ -67,7 +67,7 @@ To pass an OpenVPN config, point a volume to `/vpn` on the container, where the
 volume contains OpenVPN configs (.ovpn or .cfg).
 
 The client by default will select the first `.conf` file it finds. You can
-choose a OpenVPN config by using the `OPENVPN_CONFIG` environment variable.  
+choose a OpenVPN config by using the `OPENVPN_CONFIG` environment variable.
 
 e.g.
 ```bash
