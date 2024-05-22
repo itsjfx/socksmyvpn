@@ -3,7 +3,7 @@
 set -eu -o pipefail
 
 if [[ -n "${GITHUB_TOKEN-}" ]]; then
-    <<<"$GITHUB_TOKEN" docker login -u "$GITHUB_REPOSITORY_OWNER" --password-stdin
+    <<<"$GITHUB_TOKEN" docker login ghcr.io -u "$GITHUB_REPOSITORY_OWNER" --password-stdin
 fi
 
 git_tag="$(git describe --exact-match --tags | sed 's/^v//')"
