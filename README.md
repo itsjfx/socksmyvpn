@@ -28,7 +28,8 @@ Some features:
 
 Image: [ghcr.io/itsjfx/socksmyvpn:latest](https://github.com/itsjfx/socksmyvpn/pkgs/container/socksmyvpn)
 
-You MUST specify `cap-add=NET_ADMIN`
+* You MUST specify `cap-add=NET_ADMIN`
+* You may need to specify `--dev /dev/net/tun`
 
 ```bash
 docker run \
